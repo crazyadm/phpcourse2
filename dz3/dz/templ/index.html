@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+   <header>
+       <h1>ФОТОГАЛЕРЕЯ</h1>
+       <hr>
+   </header>
+   <div class="galery">
+   {% for photo in photos %}
+       <A Href="photos.php?photo={{photo}}">
+       <div class="fotoblock">
+           <h4>Фото</h4>
+           <img src="{{path_to_photo}}/{{photo}}">
+       </div>
+       </A>
+   {% endfor %}
+
+   </div>
+   <footer>
+      <hr>
+      <h6>@Задание в рамках самостоятельной работы</h6>
+       
+   </footer>
+    
+</body>
+</html>
