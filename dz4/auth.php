@@ -1,13 +1,15 @@
-<?
-$hostname = "localhost"; // название/путь сервера, с MySQL
-$username = "root"; // имя пользователя (в Denwer`е по умолчанию "root")
-$password = ""; // пароль пользователя (в Denwer`е по умолчанию пароль отсутствует, этот параметр можно оставить пустым)
-$dbName = "test"; // название базы данных
+<?php
+$nameServer = "localhost";
+$userName = "root";
+$password = "";
+$dbName = "dz4db"; // название базы данных
 
 /* Создаем соединение */
-mysql_connect($hostname, $username, $password) or die ("Не могу создать соединение");
-mysql_query('SET NAMES utf8') or header('Location: Error');
+$mysqli = new mysqli($nameServer, $userName, $password, $dbName);
 
-/* Выбираем базу данных. Если произойдет ошибка - вывести ее */
-mysql_select_db($dbName) or die (mysql_error());
-?>
+// тут проверяем, удалось соединится с сервером,
+// если соединения нет, то останавливаем программу и выводим сообщение;
+if ($mysqli -> connect_error) {
+    printf("Соединение не удалось: %s\n", $mysqli -> connect_error);
+    exit();
+}
